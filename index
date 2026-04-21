@@ -1,0 +1,41 @@
+# base image
+FROM node:18
+
+# working directory
+WORKDIR /app
+
+# copy files
+COPY . .
+
+# install dependencies
+RUN npm install
+
+# run app
+CMD ["npm", "start"] (dockerfile kulathu)
+
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/your-username/my-docker-app.git
+git push -u origin main
+
+name: Build Docker Image
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build Docker Image
+        run: docker build -t my-app-image .
+git add .
+git commit -m "Added Docker workflow"
+git push
